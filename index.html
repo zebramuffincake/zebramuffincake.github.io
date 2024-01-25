@@ -1,27 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google Analytics (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2538PWYH5D"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2538PWYH5D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-        // Capture QR code parameter
-        const urlParams = new URLSearchParams(window.location.search);
-        const qrCodeParam = urlParams.get('qr');
-
-        gtag('config', 'G-2538PWYH5D', {
-            'custom_map': {'dimension1': 'qr_code_param'},
-            'qr_code_param': qrCodeParam
-        });
-    </script>
+  gtag('config', 'G-2538PWYH5D');
+</script>
 
     <meta charset="UTF-8">
     <style>
         body {
-            font-family: ComicSans, sans-serif;
+            font-family: ComicSans;
             margin: 0;
             padding: 0;
             background-color: #f0f0f0;
