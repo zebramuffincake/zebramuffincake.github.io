@@ -1,42 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2538PWYH5D"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-2538PWYH5D"></script>
+	<script>
+    	window.dataLayer = window.dataLayer || [];
+    	function gtag() {
+        	dataLayer.push(arguments);
+    	}
+    	gtag('js', new Date());
+    	gtag('config', 'G-S81HR4CPCK');
+	</script>
 
-  gtag('config', 'G-2538PWYH5D');
-</script>
+	<meta charset="UTF-8">
+	<style>
+    	body {
+        	font-family: ComicSans;
+        	margin: 0;
+        	padding: 0;
+        	background-color: #f0f0f0;
+        	text-align: center;
+    	}
 
-    <meta charset="UTF-8">
-    <style>
-        body {
-            font-family: ComicSans;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-            text-align: center;
-        }
+    	p {
+        	font-size: 18px;
+        	margin-top: 20px;
+    	}
 
-        p {
-            font-size: 18px;
-            margin-top: 20px;
-        }
-
-        img {
-            width: 300px; /* Adjust the width as needed */
-            margin-top: 20px;
-        }
-    </style>
+    	img {
+        	width: 300px;
+        	margin-top: 20px;
+    	}
+	</style>
 </head>
 <body>
+
+<script>
+	// Function to extract query parameters from the URL
+	function getQueryParam(name) {
+    	const urlParams = new URLSearchParams(window.location.search);
+    	return urlParams.get(name);
+	}
+
+	// Function to handle QR code redirection and tracking
+	function handleRedirect() {
+    	const qrCodeParam = getQueryParam('qrcode');
+
+    	// Define mapping of QR codes to destination URLs
+    	const qrCodeMappings = {
+        	'code1': 'https://nsccapstone.github.io/page1.html',
+        	// Add more QR code mappings as needed
+    	};
+
+    	// Check if the QR code parameter is present and valid
+    	if (qrCodeParam && qrCodeMappings.hasOwnProperty(qrCodeParam)) {
+        	// Redirect to the corresponding URL
+        	window.location.href = qrCodeMappings[qrCodeParam];
+
+        	// Track the QR code scan in Google Analytics
+        	gtag('event', 'QRCodeScan', {
+            	'event_category': 'QRCode',
+            	'event_label': qrCodeParam,
+        	});
+    	} else {
+        	// Handle invalid or missing QR code parameter
+        	console.error('Invalid QR code');
+    	}
+	}
+
+	// Call the handleRedirect function on page load
+	window.onload = handleRedirect;
+</script>
 
 <p>Good click! Thumbs up for you!</p>
 <img src="thumbsup.gif" alt="Thumbs up because you did a good job">
 
 </body>
 </html>
-
